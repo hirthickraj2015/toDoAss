@@ -1,4 +1,4 @@
-.hi-todo {
+body {
   font-family: 'Arial', sans-serif;
   background: linear-gradient(to right, #6DD5FA, #FF758C);
   
@@ -49,4 +49,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.navbar{
+  background-color: white;
+}
+.btn-outline-success{
+  margin-left: 20px;
 }

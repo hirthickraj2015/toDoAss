@@ -35,6 +35,7 @@ function addTask(task) {
   const editButton = document.createElement('button');
   editButton.setAttribute('class','btn btn-success');
   editButton.textContent = 'Edit';
+  
   listItem.appendChild(editButton);
 
   checkBox.addEventListener('change', function() {
@@ -54,10 +55,18 @@ function addTask(task) {
 
     if (isEditing) {
         // Save the edited task and switch back to view mode
+        listItem.removeChild(checkBox);
+        listItem.removeChild(deleteButton);
+        listItem.removeChild(editButton);
+        listItem.appendChild(taskText);
+        listItem.appendChild(checkBox);
+        listItem.appendChild(deleteButton);
+        listItem.appendChild(editButton);
         const input = listItem.querySelector('input[type="text"]');
         taskText.textContent = input.value;
         listItem.removeChild(input);
         listItem.classList.remove('editing');
+        
         editButton.textContent = 'Edit';
     } else {
         // Switch to edit mode
@@ -66,6 +75,7 @@ function addTask(task) {
         input.value = taskText.textContent;
         listItem.insertBefore(input, taskText);
         listItem.classList.add('editing');
+        listItem.removeChild(taskText);
         editButton.textContent = 'Save';
     }
 });
